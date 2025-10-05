@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+<!--  Servlet Cart  -->
+<servlet>
+<servlet-name>CartServlet</servlet-name>
+<servlet-class>controller.CartServlet</servlet-class>
+</servlet>
+<!--  Servlet Products  -->
+<servlet>
+<servlet-name>ProductsServlet</servlet-name>
+<servlet-class>controller.ProductsServlet</servlet-class>
+</servlet>
+<!--  Mapping CartServlet  -->
+<servlet-mapping>
+<servlet-name>CartServlet</servlet-name>
+<url-pattern>/cart</url-pattern>
+</servlet-mapping>
+<!--  Mapping ProductsServlet  -->
+<servlet-mapping>
+<servlet-name>ProductsServlet</servlet-name>
+<url-pattern>/loadProducts</url-pattern>
+</servlet-mapping>
+<!--  Session timeout: 30 minutes  -->
+<session-config>
+<session-timeout>30</session-timeout>
+</session-config>
+<!--  Welcome file: loadProducts để tự động gọi ProductsServlet khi vào app  -->
+<welcome-file-list>
+<welcome-file>loadProducts</welcome-file>
+</welcome-file-list>
+</web-app>
