@@ -1,14 +1,14 @@
-# Dùng Tomcat chính thức từ Docker Hub
+# Sử dụng image Tomcat 9 có sẵn Java 17+
 FROM tomcat:9.0-jdk17
 
-# Xóa webapp mặc định (ROOT)
-RUN rm -rf /usr/local/tomcat/webapps/ROOT
+# Xóa các ứng dụng mặc định trong Tomcat
+RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Copy file .war của bạn thành ROOT.war để Tomcat tự deploy
-COPY war-exports/ch09_ex2.war /usr/local/tomcat/webapps/ROOT.war
+# Copy WAR đã export vào Tomcat
+COPY ch09_ex2.war /usr/local/tomcat/webapps/ROOT.war
 
-# Expose cổng 8080 (Render sẽ tự map qua $PORT)
+# Mở port 8080
 EXPOSE 8080
 
-# Chạy Tomcat
+# Khởi chạy Tomcat
 CMD ["catalina.sh", "run"]
